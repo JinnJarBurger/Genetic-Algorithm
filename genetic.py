@@ -1,13 +1,14 @@
 import random
-
 import numpy as np
 from math import factorial as fact
 from queen import Queen
+from numba import jit
 
 
 class Genetic:
 
     @staticmethod
+    @jit()
     def chromosome(n):
         chrom = []
         for i in range(n):
@@ -193,7 +194,7 @@ class Genetic:
             return ind
         else:
             setlist.add(chrom[ind])
-            ind = ind+1
+            ind = ind + 1
             return Genetic.return_dupli(chrom, ind, setlist)
 
     @staticmethod
